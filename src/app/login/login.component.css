@@ -1,0 +1,74 @@
+.login{
+    overflow: hidden;
+    width: 50%; 
+    max-width: 500px; 
+    padding-bottom: 20px;
+    border: solid 1px grey; 
+    border-radius: 5px; 
+    background: white;
+    margin: 10% auto;
+    box-shadow: 1px 2px 6px lightgrey;
+    /* padding: 10px; */
+}
+
+.login_1{
+    text-align: center;
+}
+.login_1 H1{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: solid 1px lightgrey;
+    margin: 0;
+    padding: 10px;
+    background: lightblue;
+    color: white;
+    font-weight: bold;
+}
+
+.login_2{
+    padding: 20px;
+    text-align: left;
+}
+
+.login_3{
+    margin-top: 20px;
+}
+.login_3:last-child{
+    margin-top: 30px;
+}
+
+.btn_login{
+    width: auto;
+}
+
+.login_4{
+    text-align: right;
+    font-size: 1rem;
+    line-height: 1.7rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .login{
+        width: 90%; 
+    }
+    
+    .login_4{
+        text-align: center;
+        float: none;
+        clear: both;
+        padding-top: 25px;
+        overflow: hidden;
+    }
+    
+    .login_3 .fLeft{
+        float: none;
+    }
+
+    .btn_login{
+        width: 100%;
+        float: none;
+    }
+
+
+}

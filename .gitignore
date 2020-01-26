@@ -1,6 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 /1-SQL
 DB_installed.txt
+פרוייקט רפאל פייקלוק.pdf
+
 # compiled output
 /dist
 /tmp

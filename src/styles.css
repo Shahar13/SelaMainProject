@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+BODY{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    background: lightcyan;
+    font-family: 'lato', 'arial', sans-serif;
+}
+
+.fLeft{
+    float: left;
+}
+
+.fRight{
+    float: right;
+}
