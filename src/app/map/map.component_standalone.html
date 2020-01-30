@@ -1,0 +1,106 @@
+
+    <style>
+      #map, #googleMap {
+        height: 300px;
+        width: 90%;
+        margin: 0 auto;
+        overflow: hidden;
+        border: solid 1px grey;
+      }
+
+      .info_content{
+        max-width: 250px;
+      }
+    </style>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQt2SxLbwaddfeaWWCdMiYz7zmMp4dYHE&callback=myMap" async defer></script>
+
+    <!-- <div id="map"></div> -->
+
+    <div #mapDiv id="googleMap"></div>
+
+    <script>
+
+      var contentString = `<div class="info_content" id="content">
+        <div id="bodyContent">
+        <p><b>Shahar</b>,
+        Heritage Site.</p>
+        <p>Attribution: Shahar, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">
+        Hellow Tel Aviv</a> 
+        (last visited TODAY!!).</p>
+        </div>
+      </div>`;
+
+      function myMap() {
+        let myCenter = {lat: 32.085221, lng: 34.789005} ;
+
+        var mapProp = {
+          center: new google.maps.LatLng(32.085221, 34.789005),
+          zoom: 15,
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        
+        var marker = new google.maps.Marker(
+          {
+            position: myCenter,
+            animation: google.maps.Animation.DROP,
+            icon: {
+              url: '../../assets/img/Shahar.png', 
+              size: {width: 50, height: 50}
+            },
+            title: 'Shahar',
+          }
+        );
+        marker.setMap(map);
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            width: 200,
+        });
+    
+        // OPEN infoWindow
+        marker.addListener('mouseover', function() {
+          infowindow.open(map, marker);
+        });
+        // CLOSE infoWindow
+        // marker.addListener('mouseout', function() {
+        //   infowindow.close(map, marker);
+        // });
+
+        // var markerShape = new google.maps.MarkerShape({type: 'circle'});
+        // markerShape.setMap(map, marker);
+
+        let myCenter2 = {lat: 32.090766, lng: 34.790860};
+
+        var marker2 = new google.maps.Marker(
+          {
+            position: myCenter2,
+            animation: google.maps.Animation.DROP,
+            icon: {
+              url: '../../assets/img/Shahar.png', 
+              size: {width: 50, height: 50}
+            },
+            title: 'Shahar',
+          }
+        );
+        marker2.setMap(map);
+
+        var infowindow2 = new google.maps.InfoWindow({
+            content: contentString,
+            width: 200,
+        });
+    
+        // OPEN infoWindow
+        marker2.addListener('mouseover', function() {
+          infowindow2.open(map, marker2);
+        });
+        // CLOSE infoWindow
+        // marker2.addListener('mouseout', function() {
+          // infowindow2.close(map, marker2);
+        // });
+
+      }
+      
+      
+    </script>
