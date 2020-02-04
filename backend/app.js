@@ -4,8 +4,9 @@
 // node server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-
-// var sql = require("mssql");
+const bcrypt = require('bcryptjs');
+const fs = require('fs');
+// const sql = require("mssql");
 const sql = require('mssql/msnodesqlv8');
 // config database connection credentials
 const config = {
@@ -18,11 +19,8 @@ const config = {
 };
 // PIPE to connection 
 const pool = new sql.ConnectionPool(config);
-
 // const mongoose = require('mongoose');
-
 // const Post = require('./models/post');
-
 const app = express();
 
 //Mongo connect
@@ -143,22 +141,10 @@ app.delete('/api/posts/:id', (req, res, next) => {
     // res.status(200).json({ message: 'backend/app.js: post deleted!' })
 });
 
-/////////////////////////////////////////////////////
-/////////// TEST 
-
-// app.get('/testShahar', function (req, res) {
-
-
-// var connection = {
-//   host: '(localdb)\sqlexpress',
-//   user: 'DB_USER_proj1Sela',
-//   password: 'shahar1',
-//   database: 'DB_proj1Sela'
-// }
-
 app.get('/loginUser', function (req, res) {
     console.log("USER REQUEST DATA: ")
-    console.log(req.body)
+    console.log(req.body);
+
     res.send("kuku");
     // pool.connect().then(() => {
     //     pool.request().query('select * from Users WHERE Name = req.', (err, result) => {
@@ -211,6 +197,86 @@ app.get('/user', function (req, res) {
     })    
 
 });
+
+
+//////////////////////////////////////////////////
+/////// REGISTRATION 
+// image upload
+//Node.js Function to save image from External URL.
+function saveImageToDisk(url, localPath) {var fullUrl = url;
+    var file = fs.createWriteStream(localPath);
+    var request = https.get(url, function(response) {
+        response.pipe(file);
+    });
+}
+
+app.post('/uploadImage', (req, res, next) => {
+    console.log("/uploadImage USER REQUEST DATA: ")
+    // console.log(req.body);
+    console.log(req.body);
+
+    res.json("ikgdktdkys");
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    // exports.saveImage(req, res, imageName){
+    //     let image_path='../src/assets/'+Date.now()+'.jpg';
+    //     fetchImage(req.body.profile_pic_url, image_path);
+    // }
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+     // post.save()
+    // .then(result => {
+    //     console.log('beckend/app.js promise result after save - from DB:');
+    //     console.log(result);
+    //     res.status(201).json({
+    //         message: 'beckend/app.js: Post added successfully',
+    //         postId: result._id
+    //     });
+    // });
+
+
+    // pool.connect().then(() => {
+    //     pool.request().query('select * from Users WHERE Name = req.', (err, result) => {
+    //         if(err) res.send(err)
+    //         else{
+    //             return res.json({
+    //                 data : result.recordset
+    //             })
+    //         }
+    //     })
+    //     sql.close();
+    // })    
+});
+
+// registration of new user
+
+app.post('/register', (req, res, next) => {
+    console.log('app.js /register => ');
+    console.log(req.body);
+
+    /////// SAVE TO DB
+    // after save we need to get back the ID of the post - from the DB.
+    // for that we ll make a promise on the save
+    // pool.connect().then(() => {
+    //     pool.request().query('select * from Users WHERE Name = req.', (err, result) => {
+    //         if(err) res.send(err)
+    //         else{
+    //             return res.json({
+    //                 data : result.recordset
+    //             })
+    //         }
+    //     })
+    //     sql.close();
+    // })  
+
+   
+});
+
+
+
+
 
 
 console.log('backend/app.js');

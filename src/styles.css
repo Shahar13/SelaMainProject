@@ -13,3 +13,13 @@ BODY{
 .fRight{
     float: right;
 }
+
+.error{
+    color: red;
+    font-size: 1rem;    
+}
+.mandatory{
+    color: red;
+    font-size: 1.5rem;
+    vertical-align: sub;
+}

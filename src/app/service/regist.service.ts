@@ -6,20 +6,20 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class LoginService {
+export class RegistService {
 
   private serverUrl = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
-  loginUser(userData: any):Observable<any> {
-    console.log('TJ user data', userData);
-
-    return this.http.post(this.serverUrl + 'loginUser', JSON.stringify(userData))
-    // .subscribe(
-      // res => {
-          // const response = res.text();
-      // });
+  registUser(userData: any) {
+    console.log('service/registUser userData => ', userData);
+    // JSON.stringify(userData)
+    return this.http.post(this.serverUrl + 'register', userData)
+    .subscribe(
+      (res) => {
+        console.log('service/registUser RES FROM SERVER ON THE SRV COMPONENT =>', res);
+      });
     // .subscribe((data) => {
     //   console.log('TJ user data', data);
     // });

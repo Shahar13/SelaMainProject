@@ -1,0 +1,94 @@
+<div class="login">
+  <div class="login_1">
+    <h1>Registration</h1>
+    <div class="user_img_wrap">
+      <img class="user_img" [src]="urlTemp?urlTemp:'../assets/img/anonym.png'" alt="Tempo User Image" />
+    </div>
+    <div class="login_2">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="login_3">
+          <div>Picture</div>
+          <div>
+            <input type="file" accept="image/*" name="userPicture" #userPicture="ngModel" 
+              [(ngModel)]="data.userPicture" (change)="onSelectFile($event)"
+              class="form-control" placeholder="Your picture" />
+          </div>
+        </div>
+
+        <div class="login_3">
+          <div>Name <span class="mandatory">*</span></div>
+          <div>
+            <input required minlength="2" name="userName" #userName="ngModel" [(ngModel)]="data.userName" class="form-control" placeholder="Your name" />
+          </div>
+          <div class="error" *ngIf="!checkValid(userName)">
+            Please enter a valid User Name
+          </div>
+          <!-- <div class="error" *ngIf="userName.errors.minlength">
+            Name must be at least 2 characters long.
+          </div> -->
+        </div>
+        
+        <div class="login_3">
+          <div>Password <span class="mandatory">*</span></div>
+          <div><input type="password" minlength="6" required name="userPassword" #userPassword="ngModel" [(ngModel)]="data.userPassword" class="form-control" placeholder="Your Password" /></div>
+          <div *ngIf="!checkValid(userPassword)">
+            Please enter a valid Password
+          </div>
+        </div>
+        
+        <div class="login_3">
+          <div>Email <span class="mandatory">*</span></div>
+          <div>
+            <input type="email" required name="userEmail" #userEmail="ngModel" 
+              [(ngModel)]="data.userEmail" ___email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+              class="form-control" placeholder="Your Email" />
+          </div>
+          <div class="error" *ngIf="!checkValid(userEmail)">
+            Please enter a valid Email
+          </div>
+        </div>
+
+        <div class="login_3">
+          <div>Date of Birth <span class="mandatory">*</span></div>
+          <div>
+            <input type="date" required id="userBirth" name="userBirth" #userBirth="ngModel" [(ngModel)]="data.userBirth" class="form-control" placeholder="Your Birthday" />
+          </div>
+          <div class="error" *ngIf="!checkValid(userBirth)">
+            Please enter a valid Birth
+          </div>
+        </div>
+
+        <div class="login_3">
+          <div>Work Address</div>
+          <div>
+            <input name="userWorkAddress" #userWorkAddress="ngModel" [(ngModel)]="data.userWorkAddress" class="form-control" placeholder="Your Work Address" />
+          </div>
+          <!--  NOT MANDATORY  -->
+          <!-- <div *ngIf="!checkValid(userWorkAddress)">
+            Please enter a valid Address
+          </div> -->
+        </div>
+
+        <div class="login_3 login_3_1">
+          <span class="error">
+            Fields marked with * (asterix) are mandatory fields.
+          </span>
+        </div>
+
+        <div class="login_3 login_3_2">
+          <div class="fLeft">
+            <button type="submit" [disabled]="f.form.invalid" class="btn btn-primary btn_login">Register me</button>
+          </div>
+          <!-- <div class="fRight login_4">
+            <a href="#">Forgot password?</a>
+            <br />
+            Not yet a member? <a href="#">Sign Up</a>
+          </div> -->
+        </div>
+
+
+      </form>
+    </div>
+  
+  </div>
+</div>

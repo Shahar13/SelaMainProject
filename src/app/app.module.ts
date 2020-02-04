@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
+import { RegistComponent } from './regist/regist.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserComponent } from './user/user.component';
     LoginComponent,
     MapComponent,
     HeaderComponent,
-    UserComponent
+    UserComponent,
+    RegistComponent
   ],
   imports: [
     BrowserModule,
