@@ -160,15 +160,23 @@ app.get('/loginUser', function (req, res) {
 
 });
 
-app.get('/testShahar', function (req, res) {
+app.get('/allUsers', function (req, res) {
     pool.connect().then(() => {
-        //simple query
-        pool.request().query('select * from Users', (err, result) => {
-            if(err) res.send(err)
+        // let curReq = pool.request();
+        pool.request()        
+        // .input('Id', sql.Int, 2)
+        // .output('output_parameter', sql.VarChar(50))
+        // curReq.execute('SELECT_ALL_USERS', (err, result) => {
+        .execute('SELECT_ALL_USERS', (err, result) => {
+            if(err){
+                console.log('app.js /allUsers ==> ' + err);
+                res.send(err)
+            }
             else{
-                return res.json({
+                res.status(200).json({
+                    message: 'app.js /allUsers SELECT_ALL_USERS successfully',
                     data : result.recordset
-                })
+                });
             }
         })
         sql.close();
@@ -177,7 +185,7 @@ app.get('/testShahar', function (req, res) {
 });
 
 // INSERT USER
-app.get('/user', function (req, res) {
+app.post('/user', function (req, res) {
     pool.connect().then(() => {
         console.log('TEST INSERT');
         console.log(req);
@@ -253,25 +261,36 @@ app.post('/uploadImage', (req, res, next) => {
 // registration of new user
 
 app.post('/register', (req, res, next) => {
-    console.log('app.js /register => ');
+    console.log('app.js /register res.body => ');
     console.log(req.body);
-
+    
     /////// SAVE TO DB
-    // after save we need to get back the ID of the post - from the DB.
-    // for that we ll make a promise on the save
-    // pool.connect().then(() => {
-    //     pool.request().query('select * from Users WHERE Name = req.', (err, result) => {
-    //         if(err) res.send(err)
-    //         else{
-    //             return res.json({
-    //                 data : result.recordset
-    //             })
-    //         }
-    //     })
-    //     sql.close();
-    // })  
+    pool.connect().then(()=> {
+        pool.request().query(`
+            INSERT INTO Users (Name, Email, Password, ImageSrc, DateOFBirth, WorkAddress, isAdmin) 
+            VALUES ('aaaaa', 'aaaa@gmail.com', 'aaaaaaa', 'aaaa.png', '1910-10-10', 'Being pappy', 0)
+            ` , (err, result) => {
+                if(err) {
+                    console.log('app.js /register err => ');
+                    console.log(err);
+                    res.send(err);
+                }
+                else{
+                    
+                    console.log('app.js /register result => ');
+                    console.log(result);
+                    // return res.json({
+                    return res.json({
+                        // data : result.recordset
+                        // data : result.recordsets,
+                        status:res.status
+                    })
+                }
 
-   
+                pool.close();
+        })
+    });
+  
 });
 
 

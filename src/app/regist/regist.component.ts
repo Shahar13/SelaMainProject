@@ -88,7 +88,7 @@ export class RegistComponent implements OnInit {
       // this.http.post('TO_WHICH_URL_TO_SEND', fb)
       this.upImageSrv.uploadImage(fb)
       .subscribe( res => {
-        console.log('regist comp onUploadFile server responswe => ');
+        console.log('regist comp onUploadFile server response => ');
         console.log(res);
       });
     }

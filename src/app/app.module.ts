@@ -12,6 +12,7 @@ import { MapComponent } from './map/map.component';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { RegistComponent } from './regist/regist.component';
+import { AllusersComponent } from './allusers/allusers.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegistComponent } from './regist/regist.component';
     MapComponent,
     HeaderComponent,
     UserComponent,
-    RegistComponent
+    RegistComponent,
+    AllusersComponent
   ],
   imports: [
     BrowserModule,

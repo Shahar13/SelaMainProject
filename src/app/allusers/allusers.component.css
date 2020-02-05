@@ -1,0 +1,12 @@
+.wrap{
+    overflow: hidden;
+    /* width: 90%;  */
+    padding: 10px;
+    /* max-width: 600px;  */
+    border: solid 1px grey; 
+    border-radius: 5px; 
+    background: white;
+    margin: 5% 0;
+    box-shadow: 1px 2px 6px lightgrey;
+    /* padding: 10px; */
+}

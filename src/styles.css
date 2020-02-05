@@ -23,3 +23,11 @@ BODY{
     font-size: 1.5rem;
     vertical-align: sub;
 }
+
+.gen_wrap{
+    overflow: hidden;
+    /* width: 90%;  */
+    /* max-width: 500px;  */
+    padding: 0 5%;
+    background: pink;
+}
