@@ -15,13 +15,17 @@ export class RegistComponent implements OnInit {
   urlTemp = null;
   uploadedFile: File = null;
 
+  tempImgName: string;
+  extractImageName: string;
+
   data: any = {
     userName: '',
     userPassword: '',
     userPicture: '',
-    userEmail: '',
-    userBirth: '',
-    userWorkAddress: '',
+    userEmail: 'TEST@gmail.com',
+    userBirth: '01/01/2000',
+    userWorkAddress: 'TEST',
+    userIsAdmin: 0,
   };
 
   constructor(private http: HttpClient, public upImageSrv: UploadImageService, public registUserSrv: RegistService) { }
@@ -39,26 +43,22 @@ export class RegistComponent implements OnInit {
   }
 
   onSubmit() {
+
+    /////////////////////////////////////
+    /////////////////////////////////////
+    // TRY TO USE MULTIPART file upload AND data in a single request
+    // const file: any;
+    // const formData = new FormData();
+    // formData.append('file', file.data);
+    // this,uploadService.upload(formData).pipe(..... ETC)
+
+
+    // this.registUserSrv.registUser(this.data);
+
+    this.tempImgName = this.data.userPicture;
+    this.extractImageName = this.tempImgName.replace(/^.*[\\\/]/, '');
     this.onUploadFile();
-    /////////////////////////////////////
-    /////////////////////////////////////
-    /////////////////////////////////////
-    const tempImgName: string = this.data.userPicture;
-    const extractImageName: string =  tempImgName.replace(/^.*[\\\/]/, '');
-
-    this.data = {
-      userName: this.data.userName,
-      userPassword: this.data.userPassword,
-      userPicture: extractImageName,
-      userEmail: this.data.userEmail,
-      userBirth: this.data.userBirth,
-      userWorkAddress: this.data.userWorkAddress
-    };
-    this.registUserSrv.registUser(this.data);
-    /////////////////////////////////////
-    /////////////////////////////////////
-    /////////////////////////////////////
-
+    
   }
 
   onSelectFile(event) {
@@ -78,20 +78,19 @@ export class RegistComponent implements OnInit {
 
   // upload image
   onUploadFile() {
-    if(this.data.userPicture != null && this.data.userPicture !== '') {
-      console.log('uploadedFile ==>');
-      console.log(this.uploadedFile);
-      console.log('form input type file string value ==>');
-      console.log(this.data.userPicture);
+    console.log('this.uploadedFile ==> ');
+    console.log(this.uploadedFile);
 
-      const fb = this.uploadedFile;
-      // this.http.post('TO_WHICH_URL_TO_SEND', fb)
-      this.upImageSrv.uploadImage(fb)
-      .subscribe( res => {
-        console.log('regist comp onUploadFile server response => ');
-        console.log(res);
-      });
-    }
+    const formData: FormData = new FormData();
+    formData.append('userPicture', this.uploadedFile);
+    formData.append('extractImageName', this.extractImageName);
+
+
+    this.upImageSrv.uploadImage(formData)
+    .subscribe( res => {
+      console.log('regist comp onUploadFile server response => ');
+      console.log(res);
+    });
   }
 
 }

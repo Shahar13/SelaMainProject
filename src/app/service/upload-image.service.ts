@@ -13,12 +13,12 @@ export class UploadImageService {
   constructor(private http: HttpClient) { }
 
   uploadImage(userUploadedImageData: any): Observable<any> {
-  // uploadImage(userUploadedImageData: any) {
-    console.log('service/uploadImage => ', userUploadedImageData);
+    // console.log('service/uploadImage => ');
+    // console.log(userUploadedImageData.get('userPicture'));
+    // console.log(userUploadedImageData.get('extractImageName'));
 
-    // return this.http.post(this.serverUrl + 'uploadImage', JSON.stringify(userUploadedImageData))
-    // return this.http.post<any>(this.serverUrl, userUploadedImageData);
-    return of('Shahar');
+    return this.http.post<any>(this.serverUrl, userUploadedImageData);
+    // return this.http.post<any>(this.serverUrl + 'uploadImage', {'me': 'you'});
   }
 
 }

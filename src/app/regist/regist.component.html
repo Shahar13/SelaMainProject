@@ -5,12 +5,15 @@
       <img class="user_img" [src]="urlTemp?urlTemp:'../assets/img/anonym.png'" alt="Tempo User Image" />
     </div>
     <div class="login_2">
-      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <!-- method="post" enctype="multipart/form-data" -->
+      <form name="form" enctype="multipart/form-data" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <input type="hidden" name="userIsAdmin" #userIsAdmin="ngModel" [(ngModel)]="data.userIsAdmin" class="form-control" placeholder="Your Work Address" />
+
         <div class="login_3">
           <div>Picture</div>
           <div>
-            <input type="file" accept="image/*" name="userPicture" #userPicture="ngModel" 
-              [(ngModel)]="data.userPicture" (change)="onSelectFile($event)"
+            <input type="file" accept="image/*" name="userPicture" 
+               (change)="onSelectFile($event)" [(ngModel)]="data.userPicture"
               class="form-control" placeholder="Your picture" />
           </div>
         </div>

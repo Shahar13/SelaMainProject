@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +12,10 @@ export class AllusersService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsers(){
+  getAllUsers() {
     console.log('service/getAllUsers allUserData => ');
     // console.log(userData);
     // JSON.stringify(userData)
-    return this.http.get(this.serverUrl + 'allUsers')
-    .subscribe(
-      (res) => {
-        console.log('service/getAllUsers RES FROM SERVER ON THE SRV COMPONENT =>', res);
-      });
+    return this.http.get(this.serverUrl + 'allUsers');
   }
 }

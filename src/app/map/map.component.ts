@@ -49,7 +49,7 @@ export class MapComponent implements OnInit {
         animation: google.maps.Animation.DROP,
         icon: '../../assets/img/Shahar.png',
         // icon: {
-          // url: '../../assets/img/Shahar.png', 
+          // url: '../../assets/img/Shahar.png',
           // size: {width: 50, height: 50}
         // },
         title: 'Shahar',

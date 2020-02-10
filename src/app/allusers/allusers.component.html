@@ -3,8 +3,23 @@
   <h2>
     All Users
   </h2>
-  <div class="wrap">
-    TEST
+  <div *ngFor="let user of allUsersData" class="wrap">
+    <div class="fLeft">
+      <div class="user_name">
+        {{user.Name}}
+      </div>
+      <div class="user_details">
+        Email: <a href="mailto:{{user.Email}}">{{user.Email}}</a>
+        <br />
+        Birthday: {{user.DateOfBirth}}
+        <br />
+        Work: {{user.WorkAddress}}
+      </div>
+    </div>
+
+    <div class="fRight">
+      <img src="./assets/img/{{user.ImageSrc}}" class="user_img" title="{{user.Name}}" />
+    </div>
   </div>
 
 </div>

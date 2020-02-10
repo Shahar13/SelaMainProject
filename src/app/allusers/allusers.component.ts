@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AllusersService } from '../service/allusers.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-allusers',
   templateUrl: './allusers.component.html',
   styleUrls: ['./allusers.component.css']
 })
-export class AllusersComponent implements OnInit {
+export class AllusersComponent implements OnInit, OnDestroy {
 
-  data: any = {
+  subscription: Subscription;
+
+  allUsersData: any = [];
+
+  user: any = {
     userName: '',
     userPassword: '',
     userPicture: '',
@@ -19,10 +23,20 @@ export class AllusersComponent implements OnInit {
     userWorkAddress: '',
   };
 
-  constructor(private http: HttpClient, public allUsersSrv: AllusersService) { }
+  constructor(public allUsersSrv: AllusersService) { }
 
   ngOnInit() {
-    this.allUsersSrv.getAllUsers();
+    this.subscription = this.allUsersSrv.getAllUsers()
+    // this.allUsersSrv.getAllUsers()
+    .subscribe(res => {
+      console.log('allusers component ==> ');
+      console.log((<any>res).data);
+      this.allUsersData = (<any>res).data;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
