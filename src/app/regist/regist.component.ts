@@ -83,7 +83,7 @@ export class RegistComponent implements OnInit {
 
     const formData: FormData = new FormData();
     formData.append('userPicture', this.uploadedFile);
-    formData.append('extractImageName', this.extractImageName);
+    // formData.append('extractImageName', this.extractImageName.slice(0,-4));
 
 
     this.upImageSrv.uploadImage(formData)

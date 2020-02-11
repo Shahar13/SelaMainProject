@@ -8,17 +8,12 @@ import { Observable, of } from 'rxjs';
 
 export class UploadImageService {
 
-  private serverUrl = 'http://localhost:3000/uploadImage';
+  private serverUrlUploadImage = 'http://localhost:3000/uploadImage';
 
   constructor(private http: HttpClient) { }
 
   uploadImage(userUploadedImageData: any): Observable<any> {
-    // console.log('service/uploadImage => ');
-    // console.log(userUploadedImageData.get('userPicture'));
-    // console.log(userUploadedImageData.get('extractImageName'));
-
-    return this.http.post<any>(this.serverUrl, userUploadedImageData);
-    // return this.http.post<any>(this.serverUrl + 'uploadImage', {'me': 'you'});
+    return this.http.post<any>(this.serverUrlUploadImage, userUploadedImageData);
   }
 
 }
