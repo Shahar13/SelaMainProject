@@ -214,9 +214,20 @@ app.post('/uploadImage', upload.single('userPicture'), (req, res) => {
 // app.post('/uploadImage', function (req, res){
     console.log('/uploadImage res.body ==> ');
     console.log(req.body);
-    // console.log(req.file);
+    // res.on('data', function (chunk) {
+    //     console.log('BODY: ' + chunk);
+    // });
     if(req.body) {
+        console.log('/uploadImage req.file ==> ');
+        let imageExt = /[^/]*$/.exec(req.file.mimetype)[0];
+        console.log(req.file.filename + '.' + imageExt);
+        let _imageUniqueName = req.file.filename + '.' + imageExt;
+        // console.log(req.file.mimetype);
         // res.json(req.file);
+        res.status(200).json({
+            message: 'Updated successful!',
+            imageUniqueName: _imageUniqueName,
+        })
     }
     else throw 'error';
 });

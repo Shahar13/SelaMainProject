@@ -6,7 +6,7 @@
     </div>
     <div class="login_2">
       <!-- method="post" enctype="multipart/form-data" -->
-      <form name="form" enctype="multipart/form-data" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form name="form" enctype="multipart/form-data" #f="ngForm" novalidate>
         <input type="hidden" name="userIsAdmin" #userIsAdmin="ngModel" [(ngModel)]="data.userIsAdmin" class="form-control" placeholder="Your Work Address" />
 
         <div class="login_3">
@@ -79,8 +79,9 @@
         </div>
 
         <div class="login_3 login_3_2">
-          <div class="fLeft">
-            <button type="submit" [disabled]="f.form.invalid" class="btn btn-primary btn_login">Register me</button>
+          <div ___class="fLeft">
+            <!-- <button (click)="f.form.valid && onSubmit($event)" [disabled]="f.form.invalid" class="btn btn-primary btn_login">Register me</button> -->
+            <input type="button" (click)="f.form.valid && onSubmit($event)" value="Register me" [disabled]="f.form.invalid" class="btn btn-primary btn_login" />
           </div>
           <!-- <div class="fRight login_4">
             <a href="#">Forgot password?</a>

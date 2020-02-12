@@ -19,11 +19,11 @@ export class RegistComponent implements OnInit {
   extractImageName: string;
 
   data: any = {
-    userName: '',
-    userPassword: '',
+    userName: 'asdasd',
+    userPassword: 'asdasd',
     userPicture: '',
     userEmail: 'TEST@gmail.com',
-    userBirth: '01/01/2000',
+    userBirth: '2020-02-14',
     userWorkAddress: 'TEST',
     userIsAdmin: 0,
   };
@@ -39,11 +39,11 @@ export class RegistComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
   }
 
-  onSubmit() {
-
+  onSubmit(e: Event) {
+    e.preventDefault();
     /////////////////////////////////////
     /////////////////////////////////////
     // TRY TO USE MULTIPART file upload AND data in a single request
@@ -58,7 +58,7 @@ export class RegistComponent implements OnInit {
     this.tempImgName = this.data.userPicture;
     this.extractImageName = this.tempImgName.replace(/^.*[\\\/]/, '');
     this.onUploadFile();
-    
+
   }
 
   onSelectFile(event) {
