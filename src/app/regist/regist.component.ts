@@ -47,7 +47,6 @@ export class RegistComponent implements OnInit {
 
   onSubmit() {
     const formData: FormData = new FormData();
-    
     formData.append('userPicture', this.uploadedFile);
     //collection of ALL other fields BUT the uploaded file field.
     formData.append('userData', JSON.stringify(this.data));
