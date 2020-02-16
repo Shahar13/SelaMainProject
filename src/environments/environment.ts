@@ -5,6 +5,8 @@
 export const environment = {
   production: false
 };
+export const BACKEND_SERVER = "http://localhost:3000/";
+export const UPLOADED_IMAGES = "uploads/img/";
 
 /*
  * For easier debugging in development mode, you can import the following file

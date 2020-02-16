@@ -12,20 +12,13 @@ export class RegistService {
 
   constructor(private http: HttpClient) { }
 
-  registUser(userData: any) {
-    console.log('service/registUser userData => ', userData);
-    // JSON.stringify(userData)
+  registUser(userData: FormData) {
     return this.http.post(this.serverUrl + 'register', userData)
     .subscribe(
       (res) => {
         console.log('service/registUser RES FROM SERVER ON THE SRV COMPONENT =>', res);
-      });
-    // .subscribe((data) => {
-    //   console.log('TJ user data', data);
-    // });
-    // return this.http.post<any>()
-    // return userData;
-    
+    });
+
   }
 
 }

@@ -16,6 +16,22 @@ export class AllusersService {
     console.log('service/getAllUsers allUserData => ');
     // console.log(userData);
     // JSON.stringify(userData)
-    return this.http.get(this.serverUrl + 'allUsers');
+    // TO READ TODAY 
+    // rxjs pipe
+    // rxjs operator map
+    // array map
+    return this.http.get(this.serverUrl + 'allUsers').pipe(
+      map((items:any)=>{ 
+        console.log("ITEMS");
+        console.log(items);
+      
+        return items;
+
+        // return items.data.map((item)=>({
+          // ...item,
+          // ImageSrc: this.serverUrl + 'uploads/img/' +item.ImageSrc
+        // }));
+      })
+    );
   }
 }

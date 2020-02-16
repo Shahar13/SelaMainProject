@@ -11,8 +11,9 @@ import { Observable, Subscription } from 'rxjs';
 export class AllusersComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-
   allUsersData: any = [];
+  private serverUrl = 'http://localhost:3000/';
+  imgPath:string = this.serverUrl + 'public/uploads/img/'; 
 
   user: any = {
     userName: '',
@@ -30,8 +31,8 @@ export class AllusersComponent implements OnInit, OnDestroy {
     // this.allUsersSrv.getAllUsers()
     .subscribe(res => {
       console.log('allusers component ==> ');
-      console.log((<any>res).data);
-      this.allUsersData = (<any>res).data;
+      console.log(res.data);
+      this.allUsersData = res.data;
     });
   }
 

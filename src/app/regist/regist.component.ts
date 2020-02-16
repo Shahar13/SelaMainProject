@@ -17,18 +17,21 @@ export class RegistComponent implements OnInit {
 
   tempImgName: string;
   extractImageName: string;
+  
+  // userPicture: this.uploadedFile, 
+  // userPicture: null, 
 
   data: any = {
     userName: 'asdasd',
     userPassword: 'asdasd',
-    userPicture: '',
     userEmail: 'TEST@gmail.com',
     userBirth: '2020-02-14',
     userWorkAddress: 'TEST',
     userIsAdmin: 0,
   };
 
-  constructor(private http: HttpClient, public upImageSrv: UploadImageService, public registUserSrv: RegistService) { }
+  // public upImageSrv: UploadImageService, 
+  constructor(private http: HttpClient, public registUserSrv: RegistService) { }
 
   checkValid(element: NgModel) {
     if (!element.pristine && element.touched && element.errors && element.errors.required) {
@@ -42,25 +45,19 @@ export class RegistComponent implements OnInit {
     
   }
 
-  onSubmit(e: Event) {
-    e.preventDefault();
-    /////////////////////////////////////
-    /////////////////////////////////////
-    // TRY TO USE MULTIPART file upload AND data in a single request
-    // const file: any;
-    // const formData = new FormData();
-    // formData.append('file', file.data);
-    // this,uploadService.upload(formData).pipe(..... ETC)
-
-
+  onSubmit() {
+    const formData: FormData = new FormData();
+    
+    formData.append('userPicture', this.uploadedFile);
+    //collection of ALL other fields BUT the uploaded file field.
+    formData.append('userData', JSON.stringify(this.data));
+    // console.log(this.data)
     // this.registUserSrv.registUser(this.data);
-
-    this.tempImgName = this.data.userPicture;
-    this.extractImageName = this.tempImgName.replace(/^.*[\\\/]/, '');
-    this.onUploadFile();
+    this.registUserSrv.registUser(formData);
 
   }
 
+  //stand alone routine - user selects a file, it will be shown in the form
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       // change image preview in the fork
@@ -70,27 +67,25 @@ export class RegistComponent implements OnInit {
         this.urlTemp = event.target.result;
       };
 
-      // upload routine
       this.uploadedFile = <File>event.target.files[0];
-
+      this.data.userPicture = this.uploadedFile;
     }
   }
 
-  // upload image
-  onUploadFile() {
-    console.log('this.uploadedFile ==> ');
-    console.log(this.uploadedFile);
+  // // upload image
+  // onUploadFile() {
+  //   console.log('this.uploadedFile ==> ');
+  //   console.log(this.uploadedFile);
 
-    const formData: FormData = new FormData();
-    formData.append('userPicture', this.uploadedFile);
-    // formData.append('extractImageName', this.extractImageName.slice(0,-4));
+  //   const formData: FormData = new FormData();
+  //   formData.append('userPicture', this.uploadedFile);
+  //   // formData.append('extractImageName', this.extractImageName.slice(0,-4));
 
-
-    this.upImageSrv.uploadImage(formData)
-    .subscribe( res => {
-      console.log('regist comp onUploadFile server response => ');
-      console.log(res);
-    });
-  }
+  //   this.upImageSrv.uploadImage(formData)
+  //   .subscribe( res => {
+  //     console.log('regist comp onUploadFile server response => ');
+  //     console.log(res.imageUniqueName);
+  //   });
+  // }
 
 }
