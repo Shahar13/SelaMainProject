@@ -1,5 +1,8 @@
 import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from 'protractor';
+import { from } from 'rxjs';
+
+// import { env } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +10,6 @@ import { EventEmitter } from 'protractor';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   // configHeaderNav = [
   //   {text: 'Home', title: 'Home', target: '/'},
   //   {text: 'Map', title: 'Map', target: '/map'},

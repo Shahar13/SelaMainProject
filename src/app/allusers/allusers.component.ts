@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { AllusersService } from '../service/allusers.service';
 import { Observable, Subscription } from 'rxjs';
+
+import { env } from '../../environments/environment';
+import { AllusersService } from '../service/allusers.service';
 
 @Component({
   selector: 'app-allusers',
@@ -12,7 +13,7 @@ export class AllusersComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   allUsersData: any = [];
-  private serverUrl = 'http://localhost:3000/';
+  private serverUrl = env.BACKEND_SERVER;
   imgPath:string = this.serverUrl + 'public/uploads/img/'; 
 
   user: any = {

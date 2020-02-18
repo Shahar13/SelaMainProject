@@ -8,19 +8,19 @@ import { env } from '../../environments/environment';
   providedIn: 'root'
 })
 
-export class RegistService {
+export class PostService {
 
   private serverUrl = env.BACKEND_SERVER;
 
   constructor(private http: HttpClient) { }
 
-  registUser(userData: FormData) {
-    return this.http.post(this.serverUrl + 'register', userData)
+  sendPost(userData: FormData) {
+    console.log("post service/sendPost.");
+    return this.http.post(this.serverUrl + 'newPost', userData)
     .subscribe(
       (res) => {
-        console.log('service/registUser RES FROM SERVER ON THE SRV COMPONENT =>', res);
+        console.log('service/sendPost RES FROM SERVER ON THE SRV COMPONENT =>', res);
     });
-
   }
 
 }

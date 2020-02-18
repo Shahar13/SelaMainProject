@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { env } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class LoginService {
 
-  private serverUrl = 'http://localhost:3000/';
+  private serverUrl = env.BACKEND_SERVER;
 
   constructor(private http: HttpClient) { }
 

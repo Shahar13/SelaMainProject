@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+import { env } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AllusersService {
 
-  private serverUrl = 'http://localhost:3000/';
+  private serverUrl = env.BACKEND_SERVER;
 
   constructor(private http: HttpClient) { }
 
@@ -22,9 +23,8 @@ export class AllusersService {
     // array map
     return this.http.get(this.serverUrl + 'allUsers').pipe(
       map((items:any)=>{ 
-
-        console.log("ITEMS");
-        console.log(items);
+        // const tempUser: any;
+        // return map 
       
         return items;
 

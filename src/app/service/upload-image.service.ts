@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
+import { env } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class UploadImageService {
-
-  private serverUrlUploadImage = 'http://localhost:3000/uploadImage';
+  private serverUrlUploadImage = env.BACKEND_SERVER + 'uploadImage';
 
   constructor(private http: HttpClient) { }
 

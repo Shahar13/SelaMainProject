@@ -12,7 +12,6 @@ export class HeaderComponent implements OnInit {
 
   title = 'Sela Main Project';
 
-
   constructor() { }
 
   ngOnInit() {

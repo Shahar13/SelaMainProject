@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { UploadImageService } from '../service/upload-image.service';
 import { RegistService } from '../service/regist.service';
 
 @Component({
@@ -14,12 +13,6 @@ export class RegistComponent implements OnInit {
 
   urlTemp = null;
   uploadedFile: File = null;
-
-  tempImgName: string;
-  extractImageName: string;
-  
-  // userPicture: this.uploadedFile, 
-  // userPicture: null, 
 
   data: any = {
     userName: 'asdasd',
@@ -50,10 +43,7 @@ export class RegistComponent implements OnInit {
     formData.append('userPicture', this.uploadedFile);
     //collection of ALL other fields BUT the uploaded file field.
     formData.append('userData', JSON.stringify(this.data));
-    // console.log(this.data)
-    // this.registUserSrv.registUser(this.data);
     this.registUserSrv.registUser(formData);
-
   }
 
   //stand alone routine - user selects a file, it will be shown in the form

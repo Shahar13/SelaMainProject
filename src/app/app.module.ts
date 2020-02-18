@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { RegistComponent } from './regist/regist.component';
 import { AllusersComponent } from './allusers/allusers.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AllusersComponent } from './allusers/allusers.component';
     HeaderComponent,
     UserComponent,
     RegistComponent,
-    AllusersComponent
+    AllusersComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

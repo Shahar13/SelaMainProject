@@ -5,14 +5,12 @@
       <img class="user_img" [src]="urlTemp?urlTemp:'../assets/img/anonym.png'" alt="Tempo User Image" />
     </div>
     <div class="login_2">
-      <!-- method="post" enctype="multipart/form-data" -->
       <form name="form" enctype="multipart/form-data" #f="ngForm" novalidate>
         <input type="hidden" name="userIsAdmin" #userIsAdmin="ngModel" [(ngModel)]="data.userIsAdmin" class="form-control" placeholder="Your Work Address" />
 
         <div class="login_3">
           <div>Picture</div>
           <div>
-            <!-- [(ngModel)]="data.userPicture" -->
             <input type="file" accept="image/*" 
               name="userPicture"
               (change)="onSelectFile($event)" 
@@ -28,9 +26,6 @@
           <div class="error" *ngIf="!checkValid(userName)">
             Please enter a valid User Name
           </div>
-          <!-- <div class="error" *ngIf="userName.errors.minlength">
-            Name must be at least 2 characters long.
-          </div> -->
         </div>
         
         <div class="login_3">
@@ -68,10 +63,6 @@
           <div>
             <input name="userWorkAddress" #userWorkAddress="ngModel" [(ngModel)]="data.userWorkAddress" class="form-control" placeholder="Your Work Address" />
           </div>
-          <!--  NOT MANDATORY  -->
-          <!-- <div *ngIf="!checkValid(userWorkAddress)">
-            Please enter a valid Address
-          </div> -->
         </div>
 
         <div class="login_3 login_3_1">
@@ -81,8 +72,7 @@
         </div>
 
         <div class="login_3 login_3_2">
-          <div ___class="fLeft">
-            <!-- <button (click)="f.form.valid && onSubmit($event)" [disabled]="f.form.invalid" class="btn btn-primary btn_login">Register me</button> -->
+          <div>
             <input type="button" (click)="f.form.valid && onSubmit()" value="Register me" [disabled]="f.form.invalid" class="btn btn-primary btn_login" />
           </div>
           <!-- <div class="fRight login_4">

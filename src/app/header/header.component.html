@@ -1,15 +1,34 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}
-  </h1>
-  
-  <ul class="nav_top">
-    <li><a routerLink="/" title="Home">Home</a></li>
-    <li><a routerLink="/allusers" title="All Users">All Users</a></li>
-    <li><a routerLink="/login" title="Login">Login</a></li>
-    <li><a routerLink="/map" title="Map">Map</a></li>
-    <li><a routerLink="/user" title="User">User</a></li>
-    <li><a routerLink="/regist" title="Registration">Registration</a></li>
-  </ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">{{title}}</a>
+    </div>
 
-</div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a routerLink="/" title="Home">Home <span class="sr-only">(current)</span></a></li>
+        <li><a routerLink="/allusers" title="All Users">All Users</a></li>
+        <li><a routerLink="/login" title="Login">Login</a></li>
+        <li><a routerLink="/post" title="Login">Post</a></li>
+        <li><a routerLink="/map" title="Map">Map</a></li>
+        <li><a routerLink="/user" title="User">User</a></li>
+        <li><a routerLink="/regist" title="Registration">Registration</a></li>
+      </ul>
+
+      <div class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" />
+        </div>
+        <button class="btn btn-primary btn_search">Search</button>
+      </div>
+      
+    </div>
+
+  </div>
+</nav>
