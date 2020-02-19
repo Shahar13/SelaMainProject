@@ -31,7 +31,8 @@ import { PostComponent } from './post/post.component';
     AppRoutingModule,
     FormsModule,
     // ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
